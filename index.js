@@ -20,23 +20,23 @@ const input = cli.input;
 const flags = cli.flags;
 const { clear, debug } = flags;
 
-(async () => {
+async function parser(){
 	// init({ clear });
 
-	try {
-		const packageJson = JSON.parse(fs.readFileSync(`${process.cwd}/package.json`));
+	// try {
+	// 	const packageJson = JSON.parse(fs.readFileSync(`${process.cwd}/package.json`));
 
-		if (packageJson.dependencies && packageJson.dependencies.react) {
-			console.log('React project detected');
-		}
-		else{
-			console.log("Current working directory is not a react project")
-		}
-	}
-	catch (error) {
-		console.log("Current working directory is not a react project")
+	// 	if (packageJson.dependencies && packageJson.dependencies.react) {
+	// 		console.log('React project detected');
+	// 	}
+	// 	else{
+	// 		console.log("Current working directory is not a react project")
+	// 	}
+	// }
+	// catch (error) {
+	// 	console.log("Current working directory is not a react project")
 
-	}
+	// }
 
 
 	input.includes(`help`) && cli.showHelp(0);
@@ -69,4 +69,6 @@ const { clear, debug } = flags;
 
 	debug && log(flags);
 
-})();
+};
+
+parser();
