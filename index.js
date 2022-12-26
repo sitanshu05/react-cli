@@ -66,9 +66,12 @@ async function parser() {
 			pages.routingInit();
 		}
 	}
-	else if(input[0]=='edit'){
+	else if(input[0]=='rename'){
 		if(input[1]=='component' || input[1] == 'c'){
 			component.editComponent(input[2],input[3])
+		}
+		else if(input[1]=='page' || input[1] == 'p'){
+			pages.editPage(input[2],input[3]);
 		}
 	}
 	else if (input[0] == 'test' ) {

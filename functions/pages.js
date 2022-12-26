@@ -60,16 +60,19 @@ const deletePage = (name) => {
 
 
     deleteFolderRecursive(`${process.cwd()}/src/pages/${page}`);
-    console.log(page)
     // rimraf.sync(`./src/pages/${page}`);
 
-    let routerConfig = fs.readFileSync(`${process.cwd()}/src/routes/RouterConfig.json`);
-    routerConfig = JSON.parse(routerConfig.toString());
+    if (fs.existsSync(`${process.cwd()}/src/routes`)) {
 
-    delete routerConfig[page]
+        let routerConfig = fs.readFileSync(`${process.cwd()}/src/routes/RouterConfig.json`);
+        routerConfig = JSON.parse(routerConfig.toString());
 
-    fs.writeFileSync(`${process.cwd()}/src/routes/RouterConfig.json`, JSON.stringify(routerConfig));
-    addToRouter();
+        delete routerConfig[page]
+
+        fs.writeFileSync(`${process.cwd()}/src/routes/RouterConfig.json`, JSON.stringify(routerConfig));
+        addToRouter();
+    }
+
 }
 
 const routingInit = () => {
@@ -85,7 +88,7 @@ const routingInit = () => {
     }
 
     fs.mkdirSync(`${process.cwd()}/src/routes`);
-    
+
     let pagesJson = {}
     if (fs.existsSync(`${process.cwd()}/src/pages`)) {
         const pages = fs.readdirSync(`${process.cwd()}/src/pages`)
@@ -103,7 +106,7 @@ const routingInit = () => {
 
 
 
-    fs.writeFileSync(`${process.cwd()}/src/routes/RouterConfig.json`,JSON.stringify(pagesJson));
+    fs.writeFileSync(`${process.cwd()}/src/routes/RouterConfig.json`, JSON.stringify(pagesJson));
 
     addToRouter();
 
@@ -116,7 +119,6 @@ const addToRouter = () => {
     routerConfig = JSON.parse(routerConfig.toString());
 
     const pages = Object.keys(routerConfig);
-    console.log(pages)
 
     const imports = pages.map((page) => {
 
@@ -168,4 +170,41 @@ const addToRouterConfig = (name) => {
 
 }
 
-module.exports = { createPage, deletePage, routingInit, addToRouterConfig, addToRouter }
+const editPage = (oldVal, newVal) => {
+    let oldName = oldVal.toLowerCase();
+    let newName = newVal.toLowerCase();
+
+    oldName = oldName[0].toUpperCase() + oldName.slice(1);
+    newName = newName[0].toUpperCase() + newName.slice(1);
+
+    let jsx = fs.readFileSync(`${process.cwd()}/src/pages/${oldName}/${oldName}.jsx`).toString();
+    let css = fs.readFileSync(`${process.cwd()}/src/pages/${oldName}/${oldName}.css`).toString();
+
+    jsx = jsx.replace(`import './${oldName}.css'`, `import './${newName}.css'`)
+    jsx = jsx.replace(`function ${oldName}()`, `function ${newName}()`)
+    jsx = jsx.replace(`export default ${oldName}`, `export default ${newName}`)
+
+    deletePage(oldName);
+    createPage(newName);
+
+    fs.writeFileSync(`${process.cwd()}/src/pages/${newName}/${newName}.jsx`, jsx);
+    fs.writeFileSync(`${process.cwd()}/src/pages/${newName}/${newName}.css`, css)
+
+    if (fs.existsSync(`${process.cwd()}/src/routes`)) {
+
+        let routerConfig = fs.readFileSync(`${process.cwd()}/src/routes/RouterConfig.json`);
+        routerConfig = JSON.parse(routerConfig.toString());
+
+        delete routerConfig[oldName];
+        fs.writeFileSync(`${process.cwd()}/src/routes/RouterConfig.json`, JSON.stringify(routerConfig));
+
+        addToRouter();
+
+    }
+
+
+
+
+}
+
+module.exports = { createPage, deletePage, routingInit, addToRouterConfig, addToRouter, editPage }
