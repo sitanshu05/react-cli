@@ -20,23 +20,24 @@ const input = cli.input;
 const flags = cli.flags;
 const { clear, debug } = flags;
 
-async function parser(){
+async function parser() {
 	// init({ clear });
 
-	// try {
-	// 	const packageJson = JSON.parse(fs.readFileSync(`${process.cwd}/package.json`));
+	try {
+		const packageJson = JSON.parse(fs.readFileSync(`${process.cwd()}/package.json`));
 
-	// 	if (packageJson.dependencies && packageJson.dependencies.react) {
-	// 		console.log('React project detected');
-	// 	}
-	// 	else{
-	// 		console.log("Current working directory is not a react project")
-	// 	}
-	// }
-	// catch (error) {
-	// 	console.log("Current working directory is not a react project")
+		if (packageJson.dependencies && packageJson.dependencies.react) {
+			// console.log('React project detected');
+		}
+		else{
+			console.log("Current working directory is not a react project")
+		}
+	}
+	catch (error) {
+		console.log("Current working directory is not a react project")
+		return 
 
-	// }
+	}
 
 
 	input.includes(`help`) && cli.showHelp(0);
@@ -63,6 +64,35 @@ async function parser(){
 	else if (input[0] == 'router') {
 		if (input[1] == 'init') {
 			pages.routingInit();
+		}
+	}
+	else if(input[0]=='edit'){
+		if(input[1]=='component' || input[1] == 'c'){
+			component.editComponent(input[2],input[3])
+		}
+	}
+	else if (input[0] == 'test') {
+
+
+		console.log(process.cwd())
+
+		try {
+			console.log(`${process.cwd()}/package.json`)
+			const packageJson = JSON.parse(fs.readFileSync(`${process.cwd()}/package.json`));
+
+			console.log(packageJson.dependencies)
+
+			if (packageJson.dependencies && packageJson.dependencies.react) {
+				console.log('React project detected');
+			}
+			else {
+				console.log("Current working directory is not a react project")
+			}
+		}
+		catch (error) {
+
+			console.log("Err => Current working directory is not a react project")
+			// console.log(error)
 		}
 	}
 

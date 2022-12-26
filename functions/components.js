@@ -51,4 +51,31 @@ const deleteComponent = (val) => {
 
 }
 
-module.exports = {createComponent,deleteComponent}
+const editComponent = (oldVal, newVal) =>{
+    
+   let oldName = oldVal.toLowerCase();
+   let newName = newVal.toLowerCase();
+
+   oldName = oldName[0].toUpperCase() + oldName.slice(1);
+   newName = newName[0].toUpperCase() + newName.slice(1);
+
+   let jsx = fs.readFileSync(`${process.cwd()}/src/components/${oldName}/${oldName}.jsx`).toString();
+   let css = fs.readFileSync(`${process.cwd()}/src/components/${oldName}/${oldName}.css`).toString();
+   
+
+
+
+   jsx = jsx.replace(`import './${oldName}.css'`, `import './${newName}.css'`)
+   jsx = jsx.replace(`function ${oldName}(props)`, `function ${newName}(props)`)
+   jsx = jsx.replace(`export default ${oldName}`, `export default ${newName}`)
+
+   deleteComponent(oldName);
+
+   createComponent(newName);
+
+   fs.writeFileSync(`${process.cwd()}/src/components/${newName}/${newName}.jsx`,jsx);
+   fs.writeFileSync(`${process.cwd()}/src/components/${newName}/${newName}.css`,css);
+   
+}
+
+module.exports = {createComponent,deleteComponent,editComponent}
