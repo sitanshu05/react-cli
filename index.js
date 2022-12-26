@@ -71,7 +71,7 @@ async function parser() {
 			component.editComponent(input[2],input[3])
 		}
 	}
-	else if (input[0] == 'test') {
+	else if (input[0] == 'test' ) {
 
 
 		console.log(process.cwd())
