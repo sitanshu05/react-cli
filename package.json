@@ -1,0 +1,40 @@
+{
+	"name": "react-cli",
+	"description": "A command line interface to manage your react projects",
+	"version": "0.0.1",
+	"license": "UNLICENSED",
+	"bin": {
+		"react-cli": "index.js",
+		"rct": "index.js"
+	},
+	"author": {
+		"name": "Sitanshu",
+		"email": "sitanshuhallad@gmail.com",
+		"url": "https://github.com/sitanshu05"
+	},
+	"keywords": [
+		"react-cli",
+		"Sitanshu"
+	],
+	"files": [
+		"index.js",
+		"utils"
+	],
+	"scripts": {
+		"format": "prettier --write \"./**/*.{js,json}\""
+	},
+	"dependencies": {
+		"chalk": "^4.1.2",
+		"cli-alerts": "^1.2.2",
+		"cli-handle-error": "^4.4.0",
+		"cli-handle-unhandled": "^1.1.1",
+		"cli-meow-help": "^3.1.0",
+		"cli-welcome": "^2.2.2",
+		"fs": "^0.0.1-security",
+		"meow": "^9.0.0",
+		"react-router": "^6.6.1"
+	},
+	"devDependencies": {
+		"prettier": "^2.8.1"
+	}
+}
