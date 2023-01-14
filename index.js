@@ -13,6 +13,7 @@ const log = require('./utils/log');
 const component = require('./functions/components')
 const pages = require('./functions/pages')
 const initialize = require('./functions/initialize')
+const jsfiles = require('./functions/jsfiles')
 const fs = require("fs");
 
 
@@ -52,6 +53,9 @@ async function parser() {
 		else if (input[1] == 'page' || input[1] == 'p') {
 			pages.createPage(input[2]);
 		}
+		else if(input[1] == 'hook'){
+			jsfiles.createHookFile(input[2]);
+		}
 	}
 	else if (input[0] == 'delete' || input[0] == 'del') {
 		if (input[1] == 'component' || input[1] == 'c') {
@@ -59,6 +63,9 @@ async function parser() {
 		}
 		else if (input[1] == 'page' || input[1] == 'p') {
 			pages.deletePage(input[2]);
+		}
+		else if(input[1] == 'hook'){
+			jsfiles.deleteHookFile(input[2]);
 		}
 	}
 	else if (input[0] == 'router') {
@@ -72,6 +79,9 @@ async function parser() {
 		}
 		else if(input[1]=='page' || input[1] == 'p'){
 			pages.editPage(input[2],input[3]);
+		}
+		else if(input[1]=='hook'){
+			jsfiles.renameHookFile(input[2],input[3])
 		}
 	}
 	else if (input[0] == 'test' ) {

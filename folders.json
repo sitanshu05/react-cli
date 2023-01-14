@@ -1,0 +1,13 @@
+{
+    "pages" : "p",
+    "components" : "c",
+    "hooks" : "h",
+    "context" : "ctx",
+    "utils" : "utl",
+    "features" : "f",
+    "lib" : "lib",
+    "data" : "d",
+    "layout" : "l",
+    "services" : "srv",
+    "assets" : "ast"
+}
