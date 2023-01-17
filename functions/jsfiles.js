@@ -1,78 +1,182 @@
 const fs = require("fs");
+const { flags } = require("../utils/cli");
+const cli = require("../utils/cli")
 
-const createJS = (folder,name,value) =>{
-
-   const path = `./src/${folder}/${name}.js`
-
-   if(fs.existsSync(path)){
-    console.log("File Already exsits");
-   }
-   else{
-    fs.writeFileSync(path,value);
-   }
-}
-
-const deleteJS = (folder,name) => {
+const createJS = (folder, name, value) => {
 
     const path = `./src/${folder}/${name}.js`
 
-    if(!fs.existsSync(path)){
-     console.log("File does not exsit");
+    if (fs.existsSync(path)) {
+        console.log("File Already exsits");
     }
-    else{
-     fs.unlinkSync(path);
+    else {
+        fs.writeFileSync(path, value);
+    }
+}
+
+const deleteJS = (folder, name) => {
+
+    const path = `./src/${folder}/${name}.js`
+
+    if (!fs.existsSync(path)) {
+
+        deleteJSON(folder, name)
+    }
+    else {
+        fs.unlinkSync(path);
     }
 
 }
 
-const renameJS = (folder , newName,oldName) =>{
+const renameJS = (folder, newName, oldName) => {
 
     let path = `${process.cwd()}/src/${folder}/${oldName}.js`
 
     let body = fs.readFileSync(path).toString();
 
-    body = body.replace(oldName,newName)
+    body = body.replace(oldName, newName)
 
-    deleteJS(folder,oldName);
-    createJS(folder,newName,body);
+    deleteJS(folder, oldName);
+    createJS(folder, newName, body);
 }
 
-const createHookFile = (name,folder = 'hooks') =>{
+const createJSON = (folder, name, value) => {
 
-    if(!fs.existsSync('./src/hooks')){
+    const path = `./src/${folder}/${name}.json`
+
+    if (fs.existsSync(path)) {
+        console.log("File Already exsits");
+    }
+    else {
+        fs.writeFileSync(path, value);
+    }
+}
+
+const deleteJSON = (folder, name) => {
+
+    const path = `./src/${folder}/${name}.json`
+
+    if (!fs.existsSync(path)) {
+        console.log("File does not exsit");
+    }
+    else {
+        fs.unlinkSync(path);
+    }
+
+}
+
+const renameJSON = (folder, newName, oldName) => {
+
+    let path = `${process.cwd()}/src/${folder}/${oldName}.json`
+
+    let body = fs.readFileSync(path).toString();
+
+    body = body.replace(oldName, newName)
+
+    deleteJSON(folder, oldName);
+    createJSON(folder, newName, body);
+}
+
+const createHookFile = (name, folder = 'hooks') => {
+
+    if (!fs.existsSync('./src/hooks')) {
         fs.mkdirSync("./src/hooks");
     }
 
     let truename = name.toLowerCase()
-    
+
     truename = truename[0].toUpperCase() + truename.slice(1);
-    
-    createJS(folder,"use" + truename,
-`export default function use${truename}(){
+
+    createJS(folder, "use" + truename,
+        `export default function use${truename}(){
 
 }`);
 }
 
-const deleteHookFile = (name,folder = 'hooks') =>{
+const deleteHookFile = (name, folder = 'hooks') => {
 
     let truename = name.toLowerCase()
     truename = "use" + truename[0].toUpperCase() + truename.slice(1);
 
-    deleteJS(folder,truename)
+    deleteJS(folder, truename)
 }
 
-const renameHookFile = (oldName,newName,folder = 'hooks') => {
+const renameHookFile = (oldName, newName, folder = 'hooks') => {
 
     let newTruename = newName.toLowerCase()
     let oldTruename = oldName.toLowerCase()
     newTruename = "use" + newTruename[0].toUpperCase() + newTruename.slice(1);
     oldTruename = "use" + oldTruename[0].toUpperCase() + oldTruename.slice(1);
 
-    renameJS(folder,newTruename,oldTruename)
+    renameJS(folder, newTruename, oldTruename)
 
 
 
 
 }
 
-module.exports = { createHookFile ,deleteHookFile,renameHookFile}
+const createUtilsFile = (name, folder = 'utils') => {
+
+    if (!fs.existsSync('./src/utils')) {
+        fs.mkdirSync("./src/utils");
+    }
+
+
+    createJS(folder, name,
+        `export default function ${name}(){
+            
+        }`);
+}
+
+const deleteUtilsFile = (name, folder = 'utils') => {
+
+    deleteJS(folder, name)
+}
+
+const renameUtilsFile = (oldname, newname, folder = 'utils') => {
+
+    renameJS(folder, newname, oldname)
+
+
+}
+const createDataFile = (name, folder = 'data') => {
+
+    if (!fs.existsSync('./src/data')) {
+        fs.mkdirSync("./src/data");
+    }
+
+    console.log(cli.flags.json)
+    if (cli.flags.json) {
+        createJSON(folder, name, `{
+}`);
+    }
+
+    else {
+        createJS(folder, name,
+            `export const ${name} = {
+                
+}`);
+
+    }
+}
+
+const deleteDataFile = (name, folder = 'data') => {
+
+
+    deleteJS(folder, name)
+}
+
+const renameDataFile = (oldname, newname, folder = 'data') => {
+
+    renameJS(folder, newname, oldname)
+
+
+}
+
+const createFolder = (name) => {
+    fs.mkdirSync(name);
+
+    console.log(cli.flags)
+}
+
+module.exports = { createHookFile, deleteHookFile, renameHookFile, createUtilsFile, deleteUtilsFile, renameUtilsFile, createDataFile, deleteDataFile, renameDataFile, createFolder }

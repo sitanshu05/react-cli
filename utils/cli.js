@@ -28,6 +28,11 @@ const flags = {
 		type: `boolean`,
 		alias : `c`,
 		desc : "Create a component or a page"
+	},
+	json : {
+		type:'boolean',
+		default : false,
+		desc : "Create a json data file"
 	}
 };
 
@@ -48,4 +53,4 @@ const options = {
 	flags
 };
 
-module.exports = meow(helpText, options);
+module.exports = meow(helpText, options)

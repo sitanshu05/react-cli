@@ -56,6 +56,16 @@ async function parser() {
 		else if(input[1] == 'hook'){
 			jsfiles.createHookFile(input[2]);
 		}
+		else if(input[1] == 'utils' || input[1] == "utl"){
+			jsfiles.createUtilsFile(input[2]);
+		}
+		else if(input[1] == 'data' || input[1] == "d"){
+			jsfiles.createDataFile(input[2]);
+		}
+		else if(input[1]=='assets' || input[1]=='ast'){
+			jsfiles.createFolder("assets");
+		}
+		
 	}
 	else if (input[0] == 'delete' || input[0] == 'del') {
 		if (input[1] == 'component' || input[1] == 'c') {
@@ -67,6 +77,14 @@ async function parser() {
 		else if(input[1] == 'hook'){
 			jsfiles.deleteHookFile(input[2]);
 		}
+		else if (input[1] == 'data' || input[1] == 'd') {
+			jsfiles.deleteDataFile(input[2]);
+		}
+		else if (input[1] == 'utils' || input[1] == 'utl') {
+			jsfiles.deleteUtilsFile(input[2]);
+		}
+
+	
 	}
 	else if (input[0] == 'router') {
 		if (input[1] == 'init') {
@@ -82,6 +100,12 @@ async function parser() {
 		}
 		else if(input[1]=='hook'){
 			jsfiles.renameHookFile(input[2],input[3])
+		}
+		else if (input[1] == 'data' || input[1] == 'd') {
+			jsfiles.renameDataFile(input[2]);
+		}
+		else if (input[1] == 'utils' || input[1] == 'utl') {
+			jsfiles.renameUtilsFile(input[2]);
 		}
 	}
 	else if (input[0] == 'test' ) {
