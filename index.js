@@ -40,8 +40,6 @@ async function parser() {
 
 	// }
 
-
-
 	input.includes(`help`) && cli.showHelp(0);
 
 	if (input[0] == 'init') {
@@ -62,6 +60,9 @@ async function parser() {
 		}
 		else if(input[1] == 'data' || input[1] == "d"){
 			jsfiles.createDataFile(input[2]);
+		}
+		else if(input[1] == "layout" || input[1] == "lyt"){
+			component.createLayout(input[2]);
 		}
 		else if(input[1] == 'feature' || input[1] == "feat"){
 			jsfiles.createFeature(input[2]);
@@ -87,9 +88,11 @@ async function parser() {
 		}
 		else if (input[1] == 'utils' || input[1] == 'utl') {
 			jsfiles.deleteUtilsFile(input[2]);
+		}else if(input[1]=="feature" || input[1] == 'feat'){
+			jsfiles.deleteFeature(input[2]);
+		}else if(input[1]=='layout' || input[1]=="lyt"){
+			component.deleteLayout(input[2]);
 		}
-
-	
 	}
 	else if (input[0] == 'router') {
 		if (input[1] == 'init') {
@@ -97,10 +100,7 @@ async function parser() {
 		}
 	}
 	else if(input[0]=='rename'){
-		if(input[1]=='component' || input[1] == 'c'){
-			component.editComponent(input[2],input[3])
-		}
-		else if(input[1]=='page' || input[1] == 'p'){
+		if(input[1]=='page' || input[1] == 'p'){
 			pages.editPage(input[2],input[3]);
 		}
 		else if(input[1]=='hook'){
@@ -112,10 +112,9 @@ async function parser() {
 		else if (input[1] == 'utils' || input[1] == 'utl') {
 			jsfiles.renameUtilsFile(input[2]);
 		}
+
 	}
 	else if (input[0] == 'test' ) {
-
-
 		console.log(process.cwd())
 
 		try {

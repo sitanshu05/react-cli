@@ -39,6 +39,12 @@ const flags = {
 		default : "/0",
 		desc : "Create item in a features folder",
 		alias : `f`
+	},
+	page : {
+		type : "string",
+		default : "/0",
+		desc : "Create item in a particular page folder",
+		alias : `p`
 	}
 };
 

@@ -2,7 +2,7 @@ const fs = require("fs")
 const cli = require("../utils/cli")
 const flags = cli.flags;
 const paths = require('../functions/pathManager');
-const path = paths.getPath() + "/components";
+let path = paths.getPath() + "/components";
 
 
 
@@ -10,7 +10,6 @@ const createComponent = (val) => {
     
     let name = val.toLowerCase();
     name = name[0].toUpperCase() + name.slice(1);
-    console.log(path);
 
     if (fs.existsSync(`${path}/${name}`)) {
         console.log("The component already exsits");
@@ -38,12 +37,12 @@ const deleteComponent = (val) => {
     let name = val.toLowerCase();
     name = name[0].toUpperCase() + name.slice(1);
     
-    const path = require("path")
+    const paths = require("path")
 
     const deleteFolderRecursive = (folder) => {
         if (fs.existsSync(folder)) {
             fs.readdirSync(folder).forEach((file) => {
-                const curPath = path.join(folder, file);
+                const curPath = paths.join(folder, file);
                 if (fs.lstatSync(curPath).isDirectory()) {
                     deleteFolderRecursive(curPath);
                 } else {
@@ -85,4 +84,18 @@ const editComponent = (oldVal, newVal) =>{
    
 }
 
-module.exports = {createComponent,deleteComponent,editComponent}
+const createLayout = (val) =>{
+    
+    path = paths.getPath("layout");
+    createComponent(val);
+}
+const deleteLayout = (val) =>{
+    path = paths.getPath("layout");
+
+    deleteComponent(val);
+}
+const editLayout = (oldVal,newVal) =>{
+   
+}
+
+module.exports = {createComponent,deleteComponent,editComponent,createLayout,deleteLayout,editLayout}
