@@ -33,6 +33,12 @@ const flags = {
 		type:'boolean',
 		default : false,
 		desc : "Create a json data file"
+	},
+	feature : {
+		type : "string",
+		default : "/0",
+		desc : "Create item in a features folder",
+		alias : `f`
 	}
 };
 

@@ -1,10 +1,13 @@
 const fs = require("fs");
 const { flags } = require("../utils/cli");
 const cli = require("../utils/cli")
+const pathManager = require("../functions/pathManager");
+
+let path = pathManager.getPath();
 
 const createJS = (folder, name, value) => {
 
-    const path = `./src/${folder}/${name}.js`
+    const path = `${path}/${folder}/${name}.js`
 
     if (fs.existsSync(path)) {
         console.log("File Already exsits");
@@ -16,7 +19,7 @@ const createJS = (folder, name, value) => {
 
 const deleteJS = (folder, name) => {
 
-    const path = `./src/${folder}/${name}.js`
+    const path = `${path}/${folder}/${name}.js`
 
     if (!fs.existsSync(path)) {
 
@@ -30,7 +33,7 @@ const deleteJS = (folder, name) => {
 
 const renameJS = (folder, newName, oldName) => {
 
-    let path = `${process.cwd()}/src/${folder}/${oldName}.js`
+    let path = `${path}/${folder}/${oldName}.js`
 
     let body = fs.readFileSync(path).toString();
 
@@ -42,7 +45,7 @@ const renameJS = (folder, newName, oldName) => {
 
 const createJSON = (folder, name, value) => {
 
-    const path = `./src/${folder}/${name}.json`
+    const path = `${path}/${folder}/${name}.json`
 
     if (fs.existsSync(path)) {
         console.log("File Already exsits");
@@ -54,7 +57,7 @@ const createJSON = (folder, name, value) => {
 
 const deleteJSON = (folder, name) => {
 
-    const path = `./src/${folder}/${name}.json`
+    const path = `${path}/${folder}/${name}.json`
 
     if (!fs.existsSync(path)) {
         console.log("File does not exsit");
@@ -67,7 +70,7 @@ const deleteJSON = (folder, name) => {
 
 const renameJSON = (folder, newName, oldName) => {
 
-    let path = `${process.cwd()}/src/${folder}/${oldName}.json`
+    let path = `${path}/${folder}/${oldName}.json`
 
     let body = fs.readFileSync(path).toString();
 
@@ -174,9 +177,14 @@ const renameDataFile = (oldname, newname, folder = 'data') => {
 }
 
 const createFolder = (name) => {
-    fs.mkdirSync(name);
-
-    console.log(cli.flags)
+        fs.mkdirSync(name);
 }
 
-module.exports = { createHookFile, deleteHookFile, renameHookFile, createUtilsFile, deleteUtilsFile, renameUtilsFile, createDataFile, deleteDataFile, renameDataFile, createFolder }
+const createFeature = (name) =>{
+    fs.mkdirSync(`./src/features/${name}`);
+    createJS(`features/${name}`,"index","export");
+
+    console.log(flags);
+}
+
+module.exports = { createHookFile, deleteHookFile, renameHookFile, createUtilsFile, deleteUtilsFile, renameUtilsFile, createDataFile, deleteDataFile, renameDataFile, createFolder, createFeature}

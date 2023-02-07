@@ -24,21 +24,22 @@ const { clear, debug } = flags;
 async function parser() {
 	// init({ clear });
 
-	try {
-		const packageJson = JSON.parse(fs.readFileSync(`${process.cwd()}/package.json`));
+	// try {
+	// 	const packageJson = JSON.parse(fs.readFileSync(`${process.cwd()}/package.json`));
 
-		if (packageJson.dependencies && packageJson.dependencies.react) {
-			// console.log('React project detected');
-		}
-		else{
-			console.log("Current working directory is not a react project")
-		}
-	}
-	catch (error) {
-		console.log("Current working directory is not a react project")
-		return 
+	// 	if (packageJson.dependencies && packageJson.dependencies.react) {
+	// 		// console.log('React project detected');
+	// 	}
+	// 	else{
+	// 		console.log("Current working directory is not a react project")
+	// 	}
+	// }
+	// catch (error) {
+	// 	console.log("Current working directory is not a react project")
+	// 	return 
 
-	}
+	// }
+
 
 
 	input.includes(`help`) && cli.showHelp(0);
@@ -62,9 +63,13 @@ async function parser() {
 		else if(input[1] == 'data' || input[1] == "d"){
 			jsfiles.createDataFile(input[2]);
 		}
+		else if(input[1] == 'feature' || input[1] == "feat"){
+			jsfiles.createFeature(input[2]);
+		}
 		else if(input[1]=='assets' || input[1]=='ast'){
 			jsfiles.createFolder("assets");
 		}
+		
 		
 	}
 	else if (input[0] == 'delete' || input[0] == 'del') {

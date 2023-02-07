@@ -1,16 +1,23 @@
 const fs = require("fs")
+const cli = require("../utils/cli")
+const flags = cli.flags;
+const paths = require('../functions/pathManager');
+const path = paths.getPath() + "/components";
+
+
 
 const createComponent = (val) => {
-
+    
     let name = val.toLowerCase();
     name = name[0].toUpperCase() + name.slice(1);
+    console.log(path);
 
-    if (fs.existsSync(`./src/components/${name}`)) {
+    if (fs.existsSync(`${path}/${name}`)) {
         console.log("The component already exsits");
     }
     else {
-        fs.mkdirSync(`./src/components/${name}`);
-        fs.writeFileSync(`./src/components/${name}/${name}.jsx`,
+        fs.mkdirSync(`${path}/${name}`);
+        fs.writeFileSync(`${path}/${name}/${name}.jsx`,
             `import React from 'react'
 import './${name}.css'
     
@@ -21,7 +28,7 @@ function ${name}(props) {
 }
 
 export default ${name}`);
-        fs.writeFileSync(`./src/components/${name}/${name}.css`, "");
+        fs.writeFileSync(`${path}/${name}/${name}.css`, "");
 
     }
 }
@@ -47,7 +54,7 @@ const deleteComponent = (val) => {
         }
     };
 
-    deleteFolderRecursive(`./src/components/${name}`);
+    deleteFolderRecursive(`${path}/${name}`)
 
 }
 
@@ -59,8 +66,8 @@ const editComponent = (oldVal, newVal) =>{
    oldName = oldName[0].toUpperCase() + oldName.slice(1);
    newName = newName[0].toUpperCase() + newName.slice(1);
 
-   let jsx = fs.readFileSync(`${process.cwd()}/src/components/${oldName}/${oldName}.jsx`).toString();
-   let css = fs.readFileSync(`${process.cwd()}/src/components/${oldName}/${oldName}.css`).toString();
+   let jsx = fs.readFileSync(`${path}/${oldName}/${oldName}.jsx`).toString();
+   let css = fs.readFileSync(`${path}/${oldName}/${oldName}.css`).toString();
    
 
 
@@ -73,8 +80,8 @@ const editComponent = (oldVal, newVal) =>{
 
    createComponent(newName);
 
-   fs.writeFileSync(`${process.cwd()}/src/components/${newName}/${newName}.jsx`,jsx);
-   fs.writeFileSync(`${process.cwd()}/src/components/${newName}/${newName}.css`,css);
+   fs.writeFileSync(`${path}/${newName}/${newName}.jsx`,jsx);
+   fs.writeFileSync(`${path}/${newName}/${newName}.css`,css);
    
 }
 
