@@ -5,7 +5,6 @@ const paths = require('../functions/pathManager');
 let path = paths.getPath() + "/components";
 
 
-
 const createComponent = (val) => {
     
     let name = val.toLowerCase();

@@ -12,7 +12,15 @@ function getPath(folder = "/0"){
         name = name[0].toUpperCase() + name.slice(1);
         return `${process.cwd()}/src/pages/${name}`;
 
-    }else if(folder == "layout"){
+    }
+    else if(flags.layout!= "/0"){
+
+        let name = flags.page.toLowerCase();
+        name = name[0].toUpperCase() + name.slice(1);
+
+        return `${process.cwd()}/src/layout/${name}`
+    }
+    else if(folder == "layout"){
         return `${process.cwd()}/src/layout`
     }
     else{

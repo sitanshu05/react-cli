@@ -52,7 +52,7 @@ async function parser() {
 		else if (input[1] == 'page' || input[1] == 'p') {
 			pages.createPage(input[2]);
 		}
-		else if(input[1] == 'hook'){
+		else if(input[1] == 'hook' || input[1] == "h"){
 			jsfiles.createHookFile(input[2]);
 		}
 		else if(input[1] == 'utils' || input[1] == "utl"){
@@ -70,6 +70,16 @@ async function parser() {
 		else if(input[1]=='assets' || input[1]=='ast'){
 			jsfiles.createFolder("assets");
 		}
+		else if(input[1]=='context' || input[1]=='ctxt'){
+			jsfiles.createContext(input[2]);
+		}
+		else if(input[1]=='service' || input[1] == 'srvc'){
+			console.log("srvc");
+			jsfiles.createService(input[2]);
+		}
+		else if(input[1]=='lib'){
+			jsfiles.createLib(input[2]);
+		}
 		
 		
 	}
@@ -80,7 +90,7 @@ async function parser() {
 		else if (input[1] == 'page' || input[1] == 'p') {
 			pages.deletePage(input[2]);
 		}
-		else if(input[1] == 'hook'){
+		else if(input[1] == 'hook' || input[1]=='h'){
 			jsfiles.deleteHookFile(input[2]);
 		}
 		else if (input[1] == 'data' || input[1] == 'd') {
@@ -92,7 +102,16 @@ async function parser() {
 			jsfiles.deleteFeature(input[2]);
 		}else if(input[1]=='layout' || input[1]=="lyt"){
 			component.deleteLayout(input[2]);
+		}else if(input[1]=='context' || input[1]=='ctxt'){
+			jsfiles.deleteContext(input[2]);
 		}
+		else if(input[1]=='service' || input[1]=='srvc'){
+			jsfiles.deleteService(input[2]);
+		}
+		else if(input[1]=='lib'){
+			jsfiles.deleteLib(input[2]);
+		}
+		
 	}
 	else if (input[0] == 'router') {
 		if (input[1] == 'init') {
@@ -107,10 +126,18 @@ async function parser() {
 			jsfiles.renameHookFile(input[2],input[3])
 		}
 		else if (input[1] == 'data' || input[1] == 'd') {
-			jsfiles.renameDataFile(input[2]);
+			jsfiles.renameDataFile(input[2],input[3]);
 		}
 		else if (input[1] == 'utils' || input[1] == 'utl') {
-			jsfiles.renameUtilsFile(input[2]);
+			jsfiles.renameUtilsFile(input[2],input[3]);
+		}else if(input[1]=='context' || input[1]=='ctxt'){
+			jsfiles.renameContext(input[2],input[3]);
+		}
+		else if(input[1]=='service' || input[1]=='srvc'){
+			jsfiles.renameService(input[2],input[3]);
+		}
+		else if(input[1]=='lib'){
+			jsfiles.renameLib(input[2],input[3]);
 		}
 
 	}
