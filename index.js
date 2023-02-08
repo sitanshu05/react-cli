@@ -43,7 +43,7 @@ async function parser() {
 	input.includes(`help`) && cli.showHelp(0);
 
 	if (input[0] == 'init') {
-		initialize.initializeFolder();
+		initialize.initializeFolder(input);
 	}
 	else if (input[0] == 'create' || input[0] == 'crt') {
 		if (input[1] == 'component' || input[1] == 'c') {

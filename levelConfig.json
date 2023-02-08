@@ -1,0 +1,5 @@
+{
+    "small" : ["components","pages"],
+    "medium" : ["components","pages","hooks","contexts","utils","assets"],
+    "large" : ["components","pages","hooks","contexts","utils","assets","features","layouts","services","lib"]
+}

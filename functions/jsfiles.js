@@ -256,5 +256,9 @@ function deleteFeature(val){
 
 }
 
+function createInitFolder(name){
+    createFolder("./src/" + name);
+}
 
-module.exports = { createHookFile, deleteHookFile, renameHookFile, createUtilsFile, deleteUtilsFile, renameUtilsFile, createDataFile, deleteDataFile, renameDataFile, createFolder, createFeature,deleteFeature,createContext,deleteContext,renameContext,createService,deleteService,renameService,createLib,deleteLib,renameLib}
+
+module.exports = { createHookFile, deleteHookFile, renameHookFile, createUtilsFile, deleteUtilsFile, renameUtilsFile, createDataFile, deleteDataFile, renameDataFile, createFolder, createFeature,deleteFeature,createContext,deleteContext,renameContext,createService,deleteService,renameService,createLib,deleteLib,renameLib,createInitFolder}
