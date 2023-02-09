@@ -10,6 +10,10 @@ const createComponent = (val) => {
     let name = val.toLowerCase();
     name = name[0].toUpperCase() + name.slice(1);
 
+    if(!fs.existsSync(path)){
+        fs.mkdirSync(path);
+    }
+
     if (fs.existsSync(`${path}/${name}`)) {
         console.log("The component already exsits");
     }
