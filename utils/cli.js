@@ -24,11 +24,6 @@ const flags = {
 		alias: `v`,
 		desc: `Print CLI version`
 	},
-	create : {
-		type: `boolean`,
-		alias : `c`,
-		desc : "Create a component or a page"
-	},
 	json : {
 		type:'boolean',
 		default : false,
@@ -50,8 +45,14 @@ const flags = {
 		type : "string",
 		default : "/0",
 		desc : "Create item in a layout metioned after the flag",
-		alias : `lyt`
+		alias : "l"
 
+	},
+	component : {
+		type : "string",
+		default : "/0",
+		desc : "Create item in the component metioned after the flag",
+		alias : "c"
 	}
 };
 

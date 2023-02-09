@@ -1,8 +1,6 @@
 const fs = require("fs")
 const page  = require("./pages")
 const inquirer = require("inquirer");
-const { execSync, exec} = require("child_process");
-let shell = require("shelljs");
 const folderFunc = require("./jsfiles");
 const folders = require("../levelConfig.json")
  
@@ -12,6 +10,10 @@ async function initializeFolder(input){
     folders[level].forEach(element => {
         folderFunc.createInitFolder(element);
     });
+
+    page.createPage("Home");
+
+    
     // if(level=="small"){
     //     for( i in folders.small){
     //         folderFunc.createFolder(i);
