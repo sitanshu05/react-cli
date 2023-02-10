@@ -11,6 +11,10 @@ async function initializeFolder(input){
         folderFunc.createInitFolder(element);
     });
 
+    let router = await routerNeeded();
+
+    router ? page.routingInit() : "";
+
     page.createPage("Home");
 
     
@@ -43,6 +47,23 @@ async function selectProjectSize(){
     )
 
     return size.projectLevel;
+}
+
+async function routerNeeded(){
+    const ans = await inquirer.prompt({
+        name : "router",
+        type : "list",
+        message : "Do you want to add routing?",
+        choices : [
+            "Yes",
+            "No"
+        ]
+    }).then(answers =>{
+        return answers;
+    }
+    )
+
+    return ans.router == "Yes";
 }
 
 async function selectBuildTool(){
