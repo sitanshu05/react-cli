@@ -82,7 +82,7 @@ The following commands are available to use with this tool in order to manage yo
 ```bash
 rct crt [folder] [name]
 ```
-Here **[folder]** indicated the folder in which you wish to create the file and **[name]** indicated the name of the file you wish to create.
+Here **[folder]** indicates the folder in which you wish to create the file and **[name]** indicates the name of the file you wish to create.
 
 
 ### To Delete
