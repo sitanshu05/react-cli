@@ -11,6 +11,7 @@ commands = [
     "rct crt srvc service1",
     "rct crt utl utils1",
     "rct crt feat feat1",
+    "rct crt d data1",
     "rct crt c comp1 -p page1",
     "rct crt ctxt context1 -p page1",
     "rct crt h hook1 -p page1",
@@ -38,8 +39,23 @@ commands = [
     "rct crt lyt layout1 -l layout1",
     "rct crt lib lib1 -l layout1",
     "rct crt srvc service1 -l layout1",
-    "rct crt utl utils1 -l layout1"
-
+    "rct crt utl utils1 -l layout1",
+    "rct rename h hook1 hook2",
+    "rct rename utl utils1 utils2",
+    "rct rename d data1 data2",
+    "rct rename lyt layout1 layout2",
+    "rct rename ctxt context1 context2",
+    "rct rename srvc service1 service2",
+    "rct rename lib lib1 lib2"
+    "rct del c comp2",
+    "rct del p page1",
+    "rct del ctxt context2",
+    "rct del h hook2",
+    "rct del lyt layout2",
+    "rct del lib lib2",
+    "rct del srvc service2",
+    "rct del utl utils2",
+    "rct del feat feat1"
 
 ]
 

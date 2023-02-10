@@ -119,10 +119,7 @@ async function parser() {
 		}
 	}
 	else if(input[0]=='rename'){
-		if(input[1]=='page' || input[1] == 'p'){
-			pages.editPage(input[2],input[3]);
-		}
-		else if(input[1]=='hook'){
+		if(input[1]=='hook' || input[1] == "h"){
 			jsfiles.renameHookFile(input[2],input[3])
 		}
 		else if (input[1] == 'data' || input[1] == 'd') {

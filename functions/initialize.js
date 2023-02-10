@@ -35,7 +35,7 @@ async function selectProjectSize(){
     const size = await inquirer.prompt({
         name : "projectLevel",
         type : "list",
-        message : "Select the level of your project",
+        message : "Select the scale of your project",
         choices : [
             "small",
             "medium",

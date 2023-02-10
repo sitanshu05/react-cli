@@ -1,5 +1,5 @@
 {
     "small" : ["components","pages"],
-    "medium" : ["components","pages","hooks","contexts","utils","assets"],
-    "large" : ["components","pages","hooks","contexts","utils","assets","features","layouts","services","lib"]
+    "medium" : ["components","pages","hooks","contexts","utils","assets","data"],
+    "large" : ["components","pages","hooks","contexts","utils","assets","features","layouts","services","lib","data"]
 }

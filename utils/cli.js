@@ -55,9 +55,11 @@ const flags = {
 		alias : "c"
 	}
 };
-
 const commands = {
-	help: { desc: `Print help info` }
+	help: { desc: `Print help info, please refer the github docs` },
+	crt : {desc : "Create an item"},
+	del : {desc : "Delete an item"},
+	rename : {desc : "Rename an item"}
 };
 
 const helpText = meowHelp({
