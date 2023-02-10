@@ -1,6 +1,8 @@
 
 # React CLI⚛️
 
+[![License](https://shields.io/badge/license-MIT-orange?style=for-the-badge&logo=appveyor)](https://github.com/sitanshu05/react-cli/blob/main/LICENSE.md)
+
 A command line interface to help you manage your react project folders and routing, (Thank you Angular). 
 
 
