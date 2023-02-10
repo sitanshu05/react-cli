@@ -13,9 +13,13 @@ Clone this repo in any folder in your local system💾
 ```bash
 git clone https://github.com/sitanshu05/react-cli.git
 ```
-In order to install the packages run
-```cd react-cli
-npm install```
+In order to move into the folder and install the packages run
+
+```bash
+cd react-cli
+npm install
+```
+
 Run the following command to check if the required permissions are granted
 ```bash
 ./index.js init
