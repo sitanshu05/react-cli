@@ -122,7 +122,7 @@ const addToRouter = () => {
 
     const imports = pages.map((page) => {
 
-        return `import ${page} from "../${page}/${page}"`
+        return `import ${page} from "../pages/${page}/${page}"`
     });
 
     const routes = pages.map((page) => {
@@ -151,7 +151,8 @@ ${imports.join('\n')}
                 </Routes>
             </div>
         )
-    }`
+    }
+export default Router;`
 
     fs.writeFileSync(`${process.cwd()}/src/routes/Router.js`, page);
 
