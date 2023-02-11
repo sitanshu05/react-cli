@@ -1,6 +1,8 @@
 
 # React CLI⚛️
 
+[![License](https://shields.io/badge/license-MIT-orange?style=for-the-badge&logo=appveyor)](https://github.com/sitanshu05/react-cli/blob/main/LICENSE.md)
+
 A command line interface to help you manage your react project folders and routing, (Thank you Angular). 
 
 
@@ -13,6 +15,13 @@ Clone this repo in any folder in your local system💾
 ```bash
 git clone https://github.com/sitanshu05/react-cli.git
 ```
+In order to move into the folder and install the packages run
+
+```bash
+cd react-cli
+npm install
+```
+
 Run the following command to check if the required permissions are granted
 ```bash
 ./index.js init
@@ -82,7 +91,7 @@ The following commands are available to use with this tool in order to manage yo
 ```bash
 rct crt [folder] [name]
 ```
-Here **[folder]** indicated the folder in which you wish to create the file and **[name]** indicated the name of the file you wish to create.
+Here **[folder]** indicates the folder in which you wish to create the file and **[name]** indicates the name of the file you wish to create.
 
 
 ### To Delete
