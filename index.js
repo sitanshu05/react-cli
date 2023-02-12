@@ -113,10 +113,10 @@ async function parser() {
 		}
 		
 	}
-	else if (input[0] == 'router') {
-		if (input[1] == 'init') {
-			pages.routingInit();
-		}
+	// else if (input[0] == 'router') {
+	// 	if (input[1] == 'init') {
+	// 		pages.routingInit();
+	// 	}
 	}
 	else if(input[0]=='rename'){
 		if(input[1]=='hook' || input[1] == "h"){
