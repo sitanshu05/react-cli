@@ -144,9 +144,9 @@ const createDataFile = (name, folder = 'data') => {
 
     else {
         createJS(folder, name,
-            `export const ${name} = {
+            `export const ${name} = [
                 
-}`);
+]`);
 
     }
 }
