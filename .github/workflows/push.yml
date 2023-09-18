@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v3
         # This step checks out your repository's code.
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v2
         with:
           node-version: 16
         # This step sets up Node.js with version 12.
