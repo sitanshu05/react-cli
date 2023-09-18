@@ -1,21 +1,30 @@
 name: commands test
 
-on: 
+on:
   push:
-    branches: 
+    branches:
       - main
 
-jobs: 
+jobs:
   command_test:
     runs-on: ubuntu-latest
-    steps:
-     - uses: actions/checkout@v3
-     - uses: actions/setup-node@v2
-       with: 
-        node-version: 12
-     - uses: actions/setup-python@v4
-        with:
-          python-version: '3.5'
 
-     - run: npm ci
-     - run: python test/test.py
+    steps:
+      - uses: actions/checkout@v3
+        # This step checks out your repository's code.
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+        # This step sets up Node.js with version 12.
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3'
+        # This step sets up Python with version 3.5.
+
+      - run: npm ci
+        # This step installs Node.js dependencies using npm ci.
+
+      - run: python test/test.py
+        # This step runs your Python script located in the `test` folder.
