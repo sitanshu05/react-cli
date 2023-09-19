@@ -157,7 +157,6 @@ async function parser() {
 		catch (error) {
 
 			console.log("Err => Current working directory is not a react project")
-			// console.log(error)
 		}
 	}
 
