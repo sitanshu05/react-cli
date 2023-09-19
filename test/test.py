@@ -56,7 +56,6 @@ commands = [
     "rct del srvc service2",
     "rct del utl utils2",
     "rct del feat feat1"
-
 ]
 
 for cmd in commands:
