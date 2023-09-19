@@ -59,7 +59,6 @@ commands = [
 
 ]
 
-# Iterate over the commands and run them one by one
 for cmd in commands:
     result = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     if result.returncode == 0:
